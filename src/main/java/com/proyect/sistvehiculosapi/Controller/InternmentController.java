@@ -1,5 +1,6 @@
 package com.proyect.sistvehiculosapi.Controller;
 
+import com.proyect.sistvehiculosapi.DTO.InternmentDTO;
 import com.proyect.sistvehiculosapi.Entity.InternmentEntity;
 import com.proyect.sistvehiculosapi.Service.InternmentService;
 import com.proyect.sistvehiculosapi.Service.InternmentServiceImpl;
@@ -17,9 +18,10 @@ public class InternmentController {
     private InternmentService internmentService;
 
     @PostMapping("/saveInternment")
-    public ResponseEntity<?> saveInternment(@RequestBody InternmentEntity internmentEntity){
+    public ResponseEntity<?> saveInternment(@RequestBody InternmentDTO internmentDTO){
         try {
-            return new ResponseEntity<>(internmentService.SaveInterment(internmentEntity), HttpStatus.OK);
+            System.out.println("-------"+internmentDTO);
+            return new ResponseEntity<>(internmentService.SaveInterment(internmentDTO), HttpStatus.OK);
         } catch (Exception e){
             return ResponseEntity.badRequest().build();
         }
