@@ -37,6 +37,16 @@ public class InternmentController {
         }
     }
 
+    @PutMapping("putInternment/{id}")
+    public ResponseEntity<?> putInternment(@PathVariable(name = "id")int id,
+                                           @RequestBody InternmentDTO internmentDTO){
+        try{
+            return new ResponseEntity<>(internmentService.putInternment(id, internmentDTO),HttpStatus.OK);
+        }   catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
     @GetMapping("/getListPageInternment")
     public ResponseEntity<?> getListPageInternment(@RequestParam(name = "size") int size,
                                                    @RequestParam(name = "page") int page,

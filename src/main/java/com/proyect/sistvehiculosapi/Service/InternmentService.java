@@ -11,6 +11,8 @@ import java.util.List;
 public interface InternmentService {
     InternmentEntity SaveInterment(InternmentDTO internmentDTO);
 
+    InternmentEntity putInternment(int id, InternmentDTO internmentDTO);
+
     InternmentEntity getInternment(int id);
 
     Page<ListInternmentDTO> getListPageInternment(Pageable pageable, String search);
