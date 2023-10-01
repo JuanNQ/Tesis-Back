@@ -15,6 +15,8 @@ public interface InternmentService {
 
     InternmentEntity getInternment(int id);
 
+    InternmentEntity getInternmentByPlate(String plate);
+
     Page<ListInternmentDTO> getListPageInternment(Pageable pageable, String search);
 
     void deleteInterment(int id);

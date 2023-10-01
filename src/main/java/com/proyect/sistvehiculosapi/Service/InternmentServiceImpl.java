@@ -210,6 +210,17 @@ public class InternmentServiceImpl implements InternmentService{
     }
 
     @Override
+    public InternmentEntity getInternmentByPlate(String plate){
+        PlateEntity plateEntity = plateRepository.findByPlate(plate);
+        if (plateEntity == null) return null;
+        VehicleEntity vehicleEntity = vehicleRepository.findByPlateEntity(plateEntity);
+        if (vehicleEntity == null) return null;
+        InternmentEntity internmentEntity = internmentRepository.findByVehicleEntity(vehicleEntity);
+        if (internmentEntity == null) return null;
+        return internmentEntity;
+    }
+
+    @Override
     public Page<ListInternmentDTO> getListPageInternment(Pageable pageable, String search){
         if (search.isEmpty()){
             Page<InternmentEntity> internmentEntities = internmentRepository.findAll(pageable);

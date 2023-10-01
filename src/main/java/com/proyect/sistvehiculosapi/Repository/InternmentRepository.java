@@ -1,6 +1,7 @@
 package com.proyect.sistvehiculosapi.Repository;
 
 import com.proyect.sistvehiculosapi.Entity.InternmentEntity;
+import com.proyect.sistvehiculosapi.Entity.VehicleEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +16,6 @@ public interface InternmentRepository extends JpaRepository<InternmentEntity,Int
             "inner join AdmissionTicketEntity at on at.id = ie.admissionTicketEntity " +
             "where at.number like %:search% ")
     Page<InternmentEntity> getListPageInternment(Pageable pageable, String search);
+
+    InternmentEntity findByVehicleEntity (VehicleEntity vehicleEntity);
 }

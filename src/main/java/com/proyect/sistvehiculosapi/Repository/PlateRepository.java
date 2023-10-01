@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlateRepository extends JpaRepository<PlateEntity,Integer> {
+
+    PlateEntity findByPlate (String plate);
 }

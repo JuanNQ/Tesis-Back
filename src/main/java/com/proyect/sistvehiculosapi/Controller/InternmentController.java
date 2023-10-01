@@ -21,7 +21,7 @@ public class InternmentController {
     public ResponseEntity<?> saveInternment(@RequestBody InternmentDTO internmentDTO){
         try {
             System.out.println("-------"+internmentDTO);
-            return new ResponseEntity<>(internmentService.SaveInterment(internmentDTO), HttpStatus.OK);
+            return new ResponseEntity<>(internmentService.SaveInterment(internmentDTO), HttpStatus.CREATED);
         } catch (Exception e){
             return ResponseEntity.badRequest().build();
         }
@@ -37,11 +37,20 @@ public class InternmentController {
         }
     }
 
-    @PutMapping("putInternment/{id}")
+    @GetMapping("/getInternmentByPlate/{plate}")
+    public ResponseEntity<?> getInternmentByPlate(@PathVariable(name = "plate") String plate){
+        try{
+            return new ResponseEntity<>(internmentService.getInternmentByPlate(plate),HttpStatus.OK);
+        } catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping("/putInternment/{id}")
     public ResponseEntity<?> putInternment(@PathVariable(name = "id")int id,
                                            @RequestBody InternmentDTO internmentDTO){
         try{
-            return new ResponseEntity<>(internmentService.putInternment(id, internmentDTO),HttpStatus.OK);
+            return new ResponseEntity<>(internmentService.putInternment(id, internmentDTO),HttpStatus.CREATED);
         }   catch (Exception e){
             return ResponseEntity.badRequest().build();
         }
