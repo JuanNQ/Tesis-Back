@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "tmplate")
+@Table(name = "tmplates")
 @AllArgsConstructor
 @NoArgsConstructor
 public class PlateEntity {
